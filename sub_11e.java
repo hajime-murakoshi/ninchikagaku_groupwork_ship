@@ -22,7 +22,8 @@ class Myturn{
     int MoveRangeX,MoveRangeY;
     Random random = new Random();
     int num = random.nextInt(100);
-    int moveship,Ship2,Ship3;　・/*使う変数の宣言*/
+    int moveship,Ship2,Ship3,BeforeShip,AfterShip,YMinCount,XMinCount;
+        /*使う変数の宣言*/
 
 
     if (0 <= num && num <= 49) {
@@ -32,7 +33,7 @@ class Myturn{
     }　/*ランダムで船を一つ選ぶ*/
 
 
-    if (moveship = Ship2) {/*Ship2の場合*/
+    if (moveship == Ship2) {/*Ship2の場合*/
 
         for(MoveRangeY = y2-2; MoveRangeY <= y2+2; MoveRangeY++){
             if(MoveRangeY >= 0 && MoveRangeY <=4 && MoveRangeY != y2){
@@ -67,7 +68,7 @@ class Myturn{
          System.out.println(Ship２ + "に移動しました");/*移動したことを報告する*/
     }
         
-    if (moveship = Ship3) {/*Ship3の場合*/
+    if (moveship == Ship3) {/*Ship3の場合*/
 
         for(MoveRangeY = y3-2; MoveRangeY <= y3+2; MoveRangeY++){
             if(MoveRangeY >= 0 && MoveRangeY <=4 && MoveRangeY != y3){
