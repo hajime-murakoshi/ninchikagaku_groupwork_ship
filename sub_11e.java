@@ -18,10 +18,89 @@ class Myturn{
             Ship3 = moveship;
         }     /*ランダム（５０％）で２つから１つの船を選ぶ*/
 
+        int MinCountEnemy = 0;
+    int MoveRangeX,MoveRangeY;
+    Random random = new Random();
+    int num = random.nextInt(100);
+    int moveship,Ship2,Ship3;　・/*使う変数の宣言*/
 
-        System.out.println("移動しました");/*移動できるマスの中からカウントが少ない方へと移動する*/
+
+    if (0 <= num && num <= 49) {
+        moveship = Ship2;
+    } else {
+        moveship = Ship3;
+    }　/*ランダムで船を一つ選ぶ*/
+
+
+    if (moveship = Ship2) {/*Ship2の場合*/
+
+        for(MoveRangeY = y2-2; MoveRangeY <= y2+2; MoveRangeY++){
+            if(MoveRangeY >= 0 && MoveRangeY <=4 && MoveRangeY != y2){
+                if(countmap[MoveRangeY][x2] < YMinCount){
+                    YMinCount = countmap[MoveRangeY][x2];　
+                }
+            }
+        }/*上下の4マスの中で一番カウントの小さいところを見つける*/
+
+        for(MoveRangeX = x2-2; MoveRangeX <= x2+2; MoveRangeX++){
+            if(MoveRangeX >= 0 && MoveRangeX <=4 && MoveRangeX != x2){
+                if(countmap[y2][MoveRangeX] < XMinCount){
+                    XMinCount = countmap[y2][MoveRangeX];
+                }
+            }
+        }/*左右の4マスの中で一番カウントの小さいところを見つける*/
+
+
+        if (YMinCount < XMinCount) {
+            BeforeShip = map[y2][x2];
+            AfterShip = YMinCount;
+            map[MoveRangeY][x2] = BeforeShip;
+            map[y2][x2] = AfterShip;
+            Ship2 = AfterShip;
+        } else {
+            BeforeShip = map[y2][x2];
+            AfterShip = XMinCount;
+            map[y2][MoveRangeX2] = BeforeShip;
+            map[y2][x2] = AfterShip;
+            Ship2 = AfterShip;
+        }　/*カウントが一番小さいところに移動*/
     }
-}
+        
+    if (moveship = Ship3) {/*Ship3の場合*/
+
+        for(MoveRangeY = y3-2; MoveRangeY <= y3+2; MoveRangeY++){
+            if(MoveRangeY >= 0 && MoveRangeY <=4 && MoveRangeY != y3){
+                if(countmap[MoveRangeY][x2] < YMinCount){
+                    YMinCount = countmap[MoveRangeY][x2];
+                }
+            }
+        }/*上下の4マスの中で一番カウントの小さいところを見つける*/
+
+            for(MoveRangeX = x3-2; MoveRangeX <= x3+2; MoveRangeX++){
+                if(MoveRangeX >= 0 && MoveRangeX <=4 && MoveRangeX != x3){
+                    if(countmap[y3][MoveRangeX] < XMinCount){
+                        XMinCount = countmap[y3][MoveRangeX];
+                    }
+                }
+            }/*左右の4マスの中で一番カウントの小さいところを見つける*/
+
+
+                if (YMinCount < XMinCount) {
+                    BeforeShip = map[y3][x3];
+                    AfterShip = YMinCount;
+                    map[MoveRangeY][x3] = BeforeShip;
+                    map[y3][x3] = AfterShip;
+                    Ship3 = AfterShip;
+                } else {
+                    BeforeShip = map[y3][x3];
+                    AfterShip = XMinCount;
+                    map[y3][MoveRangeX] = BeforeShip;
+                    map[y3][x3] = AfterShip;
+                    Ship3 = AfterShip;
+                }
+            }
+        System.out.println(Ship3 + "に移動しました");/*移動したことを報告する*/
+    }
 class EnemyTurn{
     int CountRangeY, CountRangeX;
     Scanner sc = new Scanner(System.in);
