@@ -1,3 +1,4 @@
+class enemyturn{
 import java.util.Scanner;
 public static void Enemyturn(int turn){
         int countmap[][] = { {0,0,0,0,0},
@@ -78,8 +79,8 @@ public static void Enemyturn(int turn){
         }
         /*命中、撃沈したかどうか*/
         turn += 1;
-        if( ship1 = 0 && ship2 = 0 && ship3 = 0 && ship4 = 0){
+        if( map[y1][x1] = 0 && map[y2][x2] = 0 && map[y3][x3] = 0 && map[y4][x4] = 0){
                 turn = 0;
         }
 }
-
+}
