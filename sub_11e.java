@@ -2,6 +2,7 @@ import java.io.File;
 import java.util.Scanner;
 
 class Myturn{
+    int a;
     if (MaxCountEnemy = 1 && ExistRange == 1){
         /*attack*/
 
