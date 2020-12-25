@@ -64,6 +64,7 @@ class Myturn{
             map[y2][x2] = AfterShip;
             Ship2 = AfterShip;
         }　/*カウントが一番小さいところに移動*/
+         System.out.println(Ship２ + "に移動しました");/*移動したことを報告する*/
     }
         
     if (moveship = Ship3) {/*Ship3の場合*/
@@ -98,8 +99,8 @@ class Myturn{
                     map[y3][x3] = AfterShip;
                     Ship3 = AfterShip;
                 }
+         System.out.println(Ship3 + "に移動しました");/*移動したことを報告する*/
             }
-        System.out.println(Ship3 + "に移動しました");/*移動したことを報告する*/
     }
 class EnemyTurn{
     int CountRangeY, CountRangeX;
