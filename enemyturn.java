@@ -77,8 +77,8 @@ public static void Enemyturn(int turn){
             }
         }
         /*命中、撃沈したかどうか*/
+        turn += 1;
         if( ship1 = 0 && ship2 = 0 && ship3 = 0 && ship4 = 0){
                 turn = 0;
         }
-        turn += 1;
 }
