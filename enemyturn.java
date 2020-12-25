@@ -82,3 +82,4 @@ public static void Enemyturn(int turn){
                 turn = 0;
         }
 }
+
