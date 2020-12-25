@@ -1,4 +1,4 @@
-import java.io.File;
+import java.util.Random;
 import java.util.Scanner;
 
 class Myturn{
@@ -11,20 +11,15 @@ class Myturn{
 
     } else{
         /*move*/
-
-        if (0 <= num && num <= 49) {
-            Ship2 = moveship;
-        } else {
-            Ship3 = moveship;
-        }     /*ランダム（５０％）で２つから１つの船を選ぶ*/
-
-        int MinCountEnemy = 0;
+　　　　
+    int MinCountEnemy = 0;
     int MoveRangeX,MoveRangeY;
     Random random = new Random();
     int num = random.nextInt(100);
     int moveship,Ship2,Ship3,BeforeShip,AfterShip,YMinCount,XMinCount;
         /*使う変数の宣言*/
 
+     
 
     if (0 <= num && num <= 49) {
         moveship = Ship2;
