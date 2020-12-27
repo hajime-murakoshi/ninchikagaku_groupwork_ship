@@ -1,3 +1,3 @@
 # ninchikagaku_groupwork_sip
 
-editorname:hajime,addperson,ryutaro
+editorname:hajime,hajime,ryutaro
