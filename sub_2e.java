@@ -63,7 +63,7 @@ class sub_2e{
                         }
                     }
                 }
-                int i,j;
+                int k,l;
                 int RangeY,RangeX;
                 int EnemyY = 100;
                 int EnemyX = 100;
@@ -72,11 +72,11 @@ class sub_2e{
                 /*敵の最大カウントの数が１の時*/
                 if(MaxCountEnemy == 1){
                     /*敵の最大カウントのある座標を調べる*/
-                    for( j = 0; j < 5; j++) {
-                        for( i = 0; i < 5; i++) {
-                            if(MaxEnemy == countmap[j][i]){
-                                EY = j;
-                                EX = i;
+                    for( l = 0; l < 5; l++) {
+                        for( k = 0; k < 5; k++) {
+                            if(MaxEnemy == countmap[l][k]){
+                                EY = l;
+                                EX = k;
                             }
                         }
                     }
