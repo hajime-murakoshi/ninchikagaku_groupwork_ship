@@ -1,3 +1,4 @@
+
 import java.util.Scanner;
 import java.util.Random;
 
@@ -18,6 +19,16 @@ class sub_2{
         int ExistRange = 0;
         int Ship1,Ship2,Ship3,Ship4;/*自分の艦の位置を示す*/
         int y1,x1,y2,x2,y3,x3,y4,x4;
+        int MinCountEnemy = 0;
+        int MoveRangeX = 0;
+        int MoveRangeY = 0;
+        int YMinCount = 0;
+        int XMinCount = 0;
+        int BeforeShip,AfterShip;
+        Random random = new Random();
+        int num = random.nextInt(100);
+        int moveship = 0;/*使う変数の宣言*/
+
         y1 = 0;
         x1 = 0;
         y2 = 1;
@@ -125,14 +136,6 @@ class sub_2{
                 } else{
                     /*move*/
 
-                    int MinCountEnemy = 0;
-                    int MoveRangeX,MoveRangeY;
-                    int YMinCount = 0;
-                    int XMinCount = 0;
-                    int BeforeShip,AfterShip;
-                    Random random = new Random();
-                    int num = random.nextInt(100);
-                    int moveship;/*使う変数の宣言*/
 
 
                     if (0 <= num && num <= 49) {
@@ -150,8 +153,12 @@ class sub_2{
                                     YMinCount = countmap[MoveRangeY][x2];
                                 }
                             }
-                            else if (MoveRangeY <= -1 && MoveRangeY >= 5){
-                                MoveRangeY = MoveRangeY;
+                        }
+                            if (MoveRangeY <= -1){
+                                MoveRangeY = MoveRangeY + 1;
+                            }
+                            if (MoveRangeY <= 5){
+                                MoveRangeY = MoveRangeY - 1;
                             }
                         }/*上下の4マスの中で一番カウントの小さいところを見つける*/
 
@@ -160,100 +167,112 @@ class sub_2{
                                 if(countmap[y2][MoveRangeX] < XMinCount){
                                     XMinCount = countmap[y2][MoveRangeX];
                                 }
-                            } else if (MoveRangeX <= -1 && MoveRangeX >= 5){
-                                MoveRangeX = MoveRangeX;
+                            }
+                                if (MoveRangeX <= -1){
+                                    MoveRangeX = MoveRangeX + 1;
+                                }
+                                if (MoveRangeX <= 5){
+                                    MoveRangeX = MoveRangeX - 1;
+                                }
+                            }
+                            System.out.println(Ship2 + "に移動しました");/*移動したことを報告する*/
+
+                            /*左右の4マスの中で一番カウントの小さいところを見つける*/
+
+
+                            if (YMinCount < XMinCount) {
+                                BeforeShip = map[y2][x2];
+                                AfterShip = YMinCount;
+                                map[MoveRangeY][x2] = BeforeShip;
+                                map[y2][x2] = AfterShip;
+                                Ship2 = AfterShip;
+                            } else {
+                                BeforeShip = map[y2][x2];
+                                AfterShip = XMinCount;
+                                map[y2][MoveRangeX] = BeforeShip;
+                                map[y2][x2] = AfterShip;
+                                Ship2 = AfterShip;
+                            }/*カウントが一番小さいところに移動*/
+                        }
+
+                        if (moveship == Ship3) {/*Ship3の場合*/
+
+                            for(MoveRangeY = y3-2; MoveRangeY <= y3+2; MoveRangeY++){
+                                if(MoveRangeY >= 0 && MoveRangeY <=4 && MoveRangeY != y3){
+                                    if(countmap[MoveRangeY][x2] < YMinCount){
+                                        YMinCount = countmap[MoveRangeY][x2];
+                                    }
+                                }
+
+                                if (MoveRangeY <= -1){
+                                    MoveRangeY = MoveRangeY + 1;
+                                }
+                                if (MoveRangeY <= 5){
+                                    MoveRangeY = MoveRangeY - 1;
+                                }
+                            }
+                            /*上下の4マスの中で一番カウントの小さいところを見つける*/
+
+                            for(MoveRangeX = x3-2; MoveRangeX <= x3+2; MoveRangeX++){
+                                if(MoveRangeX >= 0 && MoveRangeX <=4 && MoveRangeX != x3){
+                                    if(countmap[y3][MoveRangeX] < XMinCount){
+                                        XMinCount = countmap[y3][MoveRangeX];
+                                    }
+                                }
+                                    if (MoveRangeX <= -1){
+                                        MoveRangeX = MoveRangeX + 1;
+                                    }
+                                    if (MoveRangeX <= 5){
+                                        MoveRangeX = MoveRangeX - 1;
+                                    }
+                                }/*左右の4マスの中で一番カウントの小さいところを見つける*/
+
+
+                                if (YMinCount < XMinCount) {
+                                    BeforeShip = map[y3][x3];
+                                    AfterShip = YMinCount;
+                                    map[MoveRangeY][x3] = BeforeShip;
+                                    map[y3][x3] = AfterShip;
+                                    Ship3 = AfterShip;
+                                } else {
+                                    BeforeShip = map[y3][x3];
+                                    AfterShip = XMinCount;
+                                    map[y3][MoveRangeX] = BeforeShip;
+                                    map[y3][x3] = AfterShip;
+                                    Ship3 = AfterShip;
+                                }
+
+                                System.out.println(Ship3 + "に移動しました");/*移動したことを報告する*/
                             }
                         }
-                        System.out.println(Ship2 + "に移動しました");/*移動したことを報告する*/
-
-                        /*左右の4マスの中で一番カウントの小さいところを見つける*/
-
-
-                        if (YMinCount < XMinCount) {
-                            BeforeShip = map[y2][x2];
-                            AfterShip = YMinCount;
-                            map[MoveRangeY][x2] = BeforeShip;
-                            map[y2][x2] = AfterShip;
-                            Ship2 = AfterShip;
-                        } else {
-                            BeforeShip = map[y2][x2];
-                            AfterShip = XMinCount;
-                            map[y2][MoveRangeX] = BeforeShip;
-                            map[y2][x2] = AfterShip;
-                            Ship2 = AfterShip;
-                        }/*カウントが一番小さいところに移動*/
                     }
+                    if(TurnCount % 2 == 0){
+                        int CountRangeY, CountRangeX;
+                        Scanner sc = new Scanner(System.in);
+                        int i,j;
+                        System.err.print("敵の攻撃位置x座標: ");
+                        i = sc.nextInt();
+                        System.err.print("敵の攻撃位置y座標: ");
+                        j = sc.nextInt();
+                        System.out.println( i + "," + j );
 
-                    if (moveship == Ship3) {/*Ship3の場合*/
-
-                        for(MoveRangeY = y3-2; MoveRangeY <= y3+2; MoveRangeY++){
-                            if(MoveRangeY >= 0 && MoveRangeY <=4 && MoveRangeY != y3){
-                                if(countmap[MoveRangeY][x2] < YMinCount){
-                                    YMinCount = countmap[MoveRangeY][x2];
+                        CountRangeY = j;
+                        CountRangeX = i;
+                        /*魚雷の周囲３＊３マスをカウント*/
+                        for(CountRangeY = j-1; CountRangeY <= j+1; CountRangeY++){
+                            for (CountRangeX = i-1;CountRangeX <= i+1; CountRangeX++) {
+                                /*マップ外を除外*/
+                                if(CountRangeX >= 0 && CountRangeY >= 0 && CountRangeX<= 4 && CountRangeY <= 4){
+                                    countmap[CountRangeY][CountRangeX] += 1;
                                 }
-                            }  else if (MoveRangeY <= -1 && MoveRangeY >= 5){
-                                MoveRangeY = MoveRangeY;
                             }
                         }
-                        /*上下の4マスの中で一番カウントの小さいところを見つける*/
-
-                        for(MoveRangeX = x3-2; MoveRangeX <= x3+2; MoveRangeX++){
-                            if(MoveRangeX >= 0 && MoveRangeX <=4 && MoveRangeX != x3){
-                                if(countmap[y3][MoveRangeX] < XMinCount){
-                                    XMinCount = countmap[y3][MoveRangeX];
-                                }
-                            }  else if (MoveRangeX <= -1 && MoveRangeX >= 5){
-                                MoveRangeX = MoveRangeX;
-                            }
-                        }/*左右の4マスの中で一番カウントの小さいところを見つける*/
-
-
-                        if (YMinCount < XMinCount) {
-                            BeforeShip = map[y3][x3];
-                            AfterShip = YMinCount;
-                            map[MoveRangeY][x3] = BeforeShip;
-                            map[y3][x3] = AfterShip;
-                            Ship3 = AfterShip;
-                        } else {
-                            BeforeShip = map[y3][x3];
-                            AfterShip = XMinCount;
-                            map[y3][MoveRangeX] = BeforeShip;
-                            map[y3][x3] = AfterShip;
-                            Ship3 = AfterShip;
+                        /*魚雷着弾位置のカウント０*/
+                        countmap[j][i] = 0;
+                        int CornerAttack = 0;
+                        if(j==0 && i==0 || j==4 && i == 4){
+                            CornerAttack = 1;
                         }
-
-                        System.out.println(Ship3 + "に移動しました");/*移動したことを報告する*/
                     }
                 }
             }
-            if(TurnCount % 2 == 0){
-                int CountRangeY, CountRangeX;
-                Scanner sc = new Scanner(System.in);
-                int i,j;
-                System.err.print("敵の攻撃位置x座標: ");
-                i = sc.nextInt();
-                System.err.print("敵の攻撃位置y座標: ");
-                j = sc.nextInt();
-                System.out.println( i + "," + j );
-
-                CountRangeY = j;
-                CountRangeX = i;
-                /*魚雷の周囲３＊３マスをカウント*/
-                for(CountRangeY = j-1; CountRangeY <= j+1; CountRangeY++){
-                    for (CountRangeX = i-1;CountRangeX <= i+1; CountRangeX++) {
-                        /*マップ外を除外*/
-                        if(CountRangeX >= 0 && CountRangeY >= 0 && CountRangeX<= 4 && CountRangeY <= 4){
-                            countmap[CountRangeY][CountRangeX] += 1;
-                        }
-                    }
-                }
-                /*魚雷着弾位置のカウント０*/
-                countmap[j][i] = 0;
-                int CornerAttack = 0;
-                if(j==0 && i==0 || j==4 && i == 4){
-                    CornerAttack = 1;
-                }
-            }
-        }
-    }
-}
