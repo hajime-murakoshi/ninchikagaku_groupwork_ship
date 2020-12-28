@@ -26,7 +26,10 @@ class sub_2e{
         int BeforeShip,AfterShip;
         Random random = new Random();
         int num = random.nextInt(100);
-        int moveship = 0;/*使う変数の宣言*/
+        int moveship = 0;
+        int CornerAttack1 = 0;
+        int CornerAttack4 = 0;/*使う変数の宣言*/
+
         y1 = 0;
         x1 = 0;
         y2 = 2;
@@ -129,13 +132,34 @@ class sub_2e{
                     /*attack*/
 
                     System.out.println(EnemyY + "," + EnemyX + "に攻撃");
-                    /*} else if (CornerAttack =1){
-                    /*corner attack*/
+
+                } else if (CornerAttack1 == 1){
+                    /*ship1 corner attack*/
+                    Random RA1 = new Random();
+                    int RandomAttack1 = RA1.nextInt(3);
+                    if (RandomAttack1 == 1) {
+                        System.out.println("0,1に攻撃");
+                    } else if (RandomAttack1 == 2) {
+                        System.out.println("1,0に攻撃");
+                    } else
+                    System.out.println("1,1に攻撃");
+                    CornerAttack1 = 0;
+
+                } else if (CornerAttack4 == 1){
+                    /*ship4 corner attack*/
+                    Random RA4 = new Random();
+                    int RandomAttack4 = RA4.nextInt(3);
+                    if (RandomAttack4 == 1) {
+                        System.out.println("3,3に攻撃");
+                    } else if (RandomAttack4 == 2) {
+                        System.out.println("3,4に攻撃");
+                    } else
+                    System.out.println("4,3に攻撃");
+                    CornerAttack4 = 0;
 
                 } else{
                     /*move*/
-
-
+                    System.out.print("move:");
 
                     if (0 <= num && num <= 49) {
                         moveship = Ship2;
@@ -143,9 +167,7 @@ class sub_2e{
                         moveship = Ship3;
                     }/*ランダムで船を一つ選ぶ*/
 
-
                     if (moveship == Ship2) {/*Ship2の場合*/
-
                         for(MoveRangeY = y2-2; MoveRangeY <= y2+2; MoveRangeY++){
                             if(MoveRangeY >= 0 && MoveRangeY <=4 && MoveRangeY != y2){
                                 if(countmap[MoveRangeY][x2] < YMinCount){
@@ -160,7 +182,6 @@ class sub_2e{
                             MoveRangeY = MoveRangeY - 1;
                         }
                     }/*上下の4マスの中で一番カウントの小さいところを見つける*/
-
                     for(MoveRangeX = x2-2; MoveRangeX <= x2+2; MoveRangeX++){
                         if(MoveRangeX >= 0 && MoveRangeX <=4 && MoveRangeX != x2){
                             if(countmap[y2][MoveRangeX] < XMinCount){
@@ -174,7 +195,7 @@ class sub_2e{
                             MoveRangeX = MoveRangeX - 1;
                         }
                     }
-
+                    System.out.println(Ship2 + "に移動しました");/*移動したことを報告する*/
 
                     /*左右の4マスの中で一番カウントの小さいところを見つける*/
 
@@ -192,11 +213,9 @@ class sub_2e{
                         map[y2][x2] = AfterShip;
                         Ship2 = AfterShip;
                     }/*カウントが一番小さいところに移動*/
-                    System.out.println(Ship2 + "に移動しました");/*移動したことを報告する*/
                 }
 
                 if (moveship == Ship3) {/*Ship3の場合*/
-
                     for(MoveRangeY = y3-2; MoveRangeY <= y3+2; MoveRangeY++){
                         if(MoveRangeY >= 0 && MoveRangeY <=4 && MoveRangeY != y3){
                             if(countmap[MoveRangeY][x2] < YMinCount){
@@ -226,7 +245,6 @@ class sub_2e{
                             MoveRangeX = MoveRangeX - 1;
                         }
                     }/*左右の4マスの中で一番カウントの小さいところを見つける*/
-
 
                     if (YMinCount < XMinCount) {
                         BeforeShip = map[y3][x3];
@@ -275,8 +293,10 @@ class sub_2e{
                         if(map[y1][x1] > 0){
                             System.out.print("命中！");
                             map[y1][x1] -= 1;
+                            CornerAttack1 = 1;
                             if(map[y1][x1] == 0 ){
                                 System.out.print("撃沈！");
+                                CornerAttack1 = 0;
                             }
                         }
                     }else if(j == y2 && i == x2){
@@ -299,41 +319,38 @@ class sub_2e{
                         if(map[y4][x4] > 0){
                             System.out.print("命中！");
                             map[y4][x4] -= 1;
+                            CornerAttack4 = 1;
                             if(map[y4][x4] == 0 ){
                                 System.out.print("撃沈！");
+                                CornerAttack4 = 0;
                             }
                         }
-                        /*命中、撃沈したかどうか*/
-                        /*int CornerAttack = 0;
-                        if(j==0 && i==0 || j==4 && i == 4){
-                        CornerAttack = 1;
-                    }*/
-                        }
-                        for(CountRangeY = j-1; CountRangeY <= j+1; CountRangeY++){
-                            for (CountRangeX = i-1;CountRangeX <= i+1; CountRangeX++){
-                        /*マップ外を除外*/
-                                 if(CountRangeX >= 0 && CountRangeY >= 0 && CountRangeX<= 4 && CountRangeY <= 4){
-                                     countmap[CountRangeY][CountRangeX] += 1;
-                                }
-                                 if(CountRangeY == x1 && CountRangeX == y1){
-                                    System.out.print("波高し");
-                                }
-                                 if(CountRangeY == x2 && CountRangeX == y2){
-                                    System.out.print("波高し");
-                                }
-                                 if(CountRangeY == x3 && CountRangeX == y3){
-                                    System.out.print("波高し");
-                                }
-                                 if(CountRangeY == x3 && CountRangeX == y3){
-                                    System.out.print("波高し");
-                                }
+                    }
+                    for(CountRangeY = j-1; CountRangeY <= j+1; CountRangeY++){
+                        for (CountRangeX = i-1;CountRangeX <= i+1; CountRangeX++){
+                            /*マップ外を除外*/
+                            if(CountRangeX >= 0 && CountRangeY >= 0 && CountRangeX<= 4 && CountRangeY <= 4){
+                                countmap[CountRangeY][CountRangeX] += 1;
+                            }
+                            if(CountRangeY == x1 && CountRangeX == y1){
+                                System.out.print("波高し");
+                            }
+                            if(CountRangeY == x2 && CountRangeX == y2){
+                                System.out.print("波高し");
+                            }
+                            if(CountRangeY == x3 && CountRangeX == y3){
+                                System.out.print("波高し");
+                            }
+                            if(CountRangeY == x3 && CountRangeX == y3){
+                                System.out.print("波高し");
                             }
                         }
-                /*魚雷着弾位置のカウント０*/
-                countmap[j][i] = 0;
+                    }
+                    /*魚雷着弾位置のカウント０*/
+                    countmap[j][i] = 0;
 
-                TurnCount += 1;
-                System.out.print("\n");
+                    TurnCount += 1;
+                    System.out.print("\n");
                 }
             }
         }
