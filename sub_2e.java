@@ -30,10 +30,10 @@ class sub_2e{
 
         y1 = 0;
         x1 = 0;
-        y2 = 1;
-        x2 = 2;
-        y3 = 3;
-        x3 = 1;
+        y2 = 2;
+        x2 = 1;
+        y3 = 1;
+        x3 = 3;
         y4 = 4;
         x4 = 4;
         Ship1 = map[y1][x1];
@@ -175,7 +175,7 @@ class sub_2e{
                             MoveRangeX = MoveRangeX - 1;
                         }
                     }
-                    System.out.println(Ship2 + "に移動しました");/*移動したことを報告する*/
+
 
                     /*左右の4マスの中で一番カウントの小さいところを見つける*/
 
@@ -193,6 +193,7 @@ class sub_2e{
                         map[y2][x2] = AfterShip;
                         Ship2 = AfterShip;
                     }/*カウントが一番小さいところに移動*/
+                    System.out.println(Ship2 + "に移動しました");/*移動したことを報告する*/
                 }
 
                 if (moveship == Ship3) {/*Ship3の場合*/
@@ -244,81 +245,86 @@ class sub_2e{
 
                     System.out.println(Ship3 + "に移動しました");/*移動したことを報告する*/
                 }
+                TurnCount += 1;
+                System.out.print("\n");
             }
             if(TurnCount % 2 == 0){
                 System.out.println("enemyturn");
                 int CountRangeY, CountRangeX;
                 Scanner sc = new Scanner(System.in);
                 int i,j;
-                System.err.print("敵の攻撃位置x座標: ");
-                i = sc.nextInt();
                 System.err.print("敵の攻撃位置y座標: ");
                 j = sc.nextInt();
-                System.out.println( i + "," + j );
+                System.err.print("敵の攻撃位置x座標: ");
+                i = sc.nextInt();
+                System.out.println( j + "," + i );
 
                 CountRangeY = j;
                 CountRangeX = i;
                 /*魚雷の周囲３＊３マスをカウント*/
+                if(j == y1 && i == x1){
+                    if(map[y1][x1] > 0){
+                        System.out.print("命中！");
+                        map[y1][x1] -= 1;
+                        if(map[y1][x1] == 0 ){
+                            System.out.print("撃沈！");
+                        }
+                    }
+                }else if(j == y2 && i == x2){
+                    if(map[y2][x2] > 0){
+                        System.out.print("命中！");
+                        map[y2][x2] -= 1;
+                        if(map[y2][x2] == 0 ){
+                            System.out.print("撃沈！");
+                        }
+                    }
+                }else if(j == y3 && i == x3){
+                    if(map[y3][x3] > 0){
+                        System.out.print("命中！");
+                        map[y3][x3] -= 1;
+                        if(map[y3][x3] == 0 ){
+                            System.out.print("撃沈！");
+                        }
+                    }
+                }else if(j == y4 && i == x4){
+                    if(map[y4][x4] > 0){
+                        System.out.print("命中！");
+                        map[y4][x4] -= 1;
+                        if(map[y4][x4] == 0 ){
+                            System.out.print("撃沈！");
+                        }
+                    }
+                    /*命中、撃沈したかどうか*/
+                    /*int CornerAttack = 0;
+                    if(j==0 && i==0 || j==4 && i == 4){
+                        CornerAttack = 1;
+                    }*/
+                }
                 for(CountRangeY = j-1; CountRangeY <= j+1; CountRangeY++){
                     for (CountRangeX = i-1;CountRangeX <= i+1; CountRangeX++) {
                         /*マップ外を除外*/
                         if(CountRangeX >= 0 && CountRangeY >= 0 && CountRangeX<= 4 && CountRangeY <= 4){
                             countmap[CountRangeY][CountRangeX] += 1;
-          }
-          if(CountRangeY == x1 && CountRangeX == y1){
-              System.out.print("波高し");
-          }
-          if(CountRangeY == x2 && CountRangeX == y2){
-              System.out.print("波高し");
-          }
-          if(CountRangeY == x3 && CountRangeX == y3){
-              System.out.print("波高し");
-          }
-          if(CountRangeY == x3 && CountRangeX == y3){
-              System.out.print("波高し");
-          }
+                        }
+                        if(CountRangeY == x1 && CountRangeX == y1){
+                            System.out.print("波高し");
+                        }
+                        if(CountRangeY == x2 && CountRangeX == y2){
+                            System.out.print("波高し");
+                        }
+                        if(CountRangeY == x3 && CountRangeX == y3){
+                            System.out.print("波高し");
+                        }
+                        if(CountRangeY == x3 && CountRangeX == y3){
+                            System.out.print("波高し");
                         }
                     }
                 }
                 /*魚雷着弾位置のカウント０*/
                 countmap[j][i] = 0;
-                if(j == y1 && i == x1){
-           if(map[y1][x1] > 0){
-               System.out.print("命中！");
-               map[y1][x1] -= 1;
-               if(map[y1][x1] == 0 ){
-                   System.out.print("撃沈！");
-               }
-           }
-       }else if(j == y2 && i == x2){
-           if(map[y2][x2] > 0){
-               System.out.print("命中！");
-               map[y2][x2] -= 1;
-               if(map[y2][x2] == 0 ){
-                   System.out.print("撃沈！");
-               }
-           }
-       }else if(j == y3 && i == x3){
-           if(map[y3][x3] > 0){
-               System.out.print("命中！");
-               map[y3][x3] -= 1;
-               if(map[y3][x3] == 0 ){
-                   System.out.print("撃沈！");
-               }
-           }
-       }else if(j == y4 && i == x4){
-           if(map[y4][x4] > 0){
-               System.out.print("命中！");
-               map[y4][x4] -= 1;
-               if(map[y4][x4] == 0 ){
-                   System.out.print("撃沈！");
-               }
-           }
-           /*命中、撃沈したかどうか*/
-                int CornerAttack = 0;
-                if(j==0 && i==0 || j==4 && i == 4){
-                    CornerAttack = 1;
-                }
+
+                TurnCount += 1;
+                System.out.print("\n");
             }
         }
     }
