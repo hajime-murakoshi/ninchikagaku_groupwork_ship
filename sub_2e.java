@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.Random;
 
-class sub_2ea{
+class sub_2e{
     public static void main(String[] args) {
         int map[][] =      { {3,0,0,0,0},
         {0,0,0,3,0},
