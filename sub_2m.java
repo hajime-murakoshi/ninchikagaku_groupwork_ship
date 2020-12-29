@@ -307,9 +307,9 @@ class sub_2m{
                         }
 
                     }
-                    TurnCount += 1;
-                    System.out.print("\n");
                 }
+                TurnCount += 1;
+                System.out.print("\n");
             }
             if(TurnCount % 2 == 0){
                 System.out.println("enemyturn");
