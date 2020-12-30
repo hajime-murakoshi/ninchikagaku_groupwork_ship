@@ -155,7 +155,6 @@ class sub_3{
             MyAction = sc.nextInt();
             if(MyAction == 0){
               countmap[EnemyY][EnemyX] += 2;
-              System.err.print(countmap[EnemyY][EnemyX]);
               /*命中した場合、着弾地点のカウントを2上げる。*/
             } else if (MyAction == 1){
               /*波高しのとき、着弾地点のカウントを０に、着弾地点の周囲を+1する。*/
@@ -215,7 +214,6 @@ class sub_3{
             MyAction = sc.nextInt();
             if(MyAction == 0){
               countmap[C1AtackY][C1AtackX] += 2;
-              System.err.print(countmap[C1AtackY][C1AtackX]);
               /*命中した場合、着弾地点のカウントを2上げる。*/
             } else if (MyAction == 1){
               /*波高しのとき、着弾地点のカウントを０に、着弾地点の周囲を+1する。*/
@@ -275,7 +273,6 @@ class sub_3{
             MyAction = sc.nextInt();
             if(MyAction == 0){
               countmap[C4AtackY][C4AtackX] += 2;
-              System.err.print(countmap[C4AtackY][C4AtackX]);
               /*命中した場合、着弾地点のカウントを2上げる。*/
             } else if (MyAction == 1){
               /*波高しのとき、着弾地点のカウントを０に、着弾地点の周囲を+1する。*/
