@@ -19,11 +19,8 @@ class sub_3{
     int Ship1,Ship2,Ship3,Ship4;/*自分の艦の位置を示す*/
     int y1,x1,y2,x2,y3,x3,y4,x4;
     int MinCountEnemy = 0;
-    int MoveRangeX = 0;
     int MoveRangeY = 0;
     int YMinCount = 10;
-    int XMinCount = 10;
-    int XMinMass = 0;
     int YMinMass = 0;
     int BeforeShip,AfterShip;
     int moveship = 0;
