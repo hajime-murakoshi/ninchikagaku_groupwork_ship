@@ -173,28 +173,122 @@ class sub_2m{
           }
 
         } else if (CornerAttack1 == 1){
+            int C1AtackY;
+            int C1AtackX;
+            int CountMyRangeX;
+            int CountMyRangeY;
+            int MyAction;
           /*ship1 corner attack*/
           Random RA1 = new Random();
           int RandomAttack1 = RA1.nextInt(3);
           if (RandomAttack1 == 1) {
             System.out.println("0,1に攻撃");
+            C1AtackY = 0;
+            C1AtackX = 1;
           } else if (RandomAttack1 == 2) {
             System.out.println("1,0に攻撃");
+            C1AtackY = 1;
+            C1AtackX = 0;
           } else
           System.out.println("1,1に攻撃");
           CornerAttack1 = 0;
+          C1AtackY = 1;
+          C1AtackX = 1;
+          Scanner sc = new Scanner(System.in);
+          System.err.print("攻撃の結果(命中:0,波高:1,無反応:2,撃沈:3):");
+          MyAction = sc.nextInt();
+          if(MyAction == 0){
+            countmap[C1AtackY][C1AtackX] += 2;
+            System.err.print(countmap[C1AtackY][C1AtackX]);
+            /*命中した場合、着弾地点のカウントを2上げる。*/
+          } else if (MyAction == 1){
+            /*波高しのとき、着弾地点のカウントを０に、着弾地点の周囲を+1する。*/
+            CountMyRangeY = C1AtackY;
+            CountMyRangeX = C1AtackX;
+            for(CountMyRangeY = C1AtackY-1; CountMyRangeY <= C1AtackY+1; CountMyRangeY++){
+              for (CountMyRangeX = C1AtackX-1;CountMyRangeX <= C1AtackX+1; CountMyRangeX++){
+                /*マップ外を除外*/
+                if(CountMyRangeX >= 0 && CountMyRangeY >= 0 && CountMyRangeX<= 4 && CountMyRangeY <= 4){
+                  countmap[CountMyRangeY][CountMyRangeX] += 1;
+                }
+              }
+
+            }
+            countmap[C1AtackY][C1AtackX] = 0;
+          } else if (MyAction == 2){
+            CountMyRangeY = C1AtackY;
+            CountMyRangeX = C1AtackX;
+            for(CountMyRangeY = C1AtackY-1; CountMyRangeY <= C1AtackY+1; CountMyRangeY++){
+              for (CountMyRangeX = C1AtackX-1;CountMyRangeX <= C1AtackX+1; CountMyRangeX++){
+                /*マップ外を除外*/
+                if(CountMyRangeX >= 0 && CountMyRangeY >= 0 && CountMyRangeX<= 4 && CountMyRangeY <= 4){
+                  countmap[CountMyRangeY][CountMyRangeX] = 0;
+                }
+                /*無反応の時は、着弾地点とその周囲のカウントを0にする。*/
+              }
+            }
+          } else if (MyAction == 3){
+            countmap[C1AtackY][C1AtackX] = 0;
+          }
 
         } else if (CornerAttack4 == 1){
+            int C4AtackY;
+            int C4AtackX;
+            int CountMyRangeX;
+            int CountMyRangeY;
+            int MyAction;
           /*ship4 corner attack*/
           Random RA4 = new Random();
           int RandomAttack4 = RA4.nextInt(3);
           if (RandomAttack4 == 1) {
             System.out.println("3,3に攻撃");
+            C4AtackY = 3;
+            C4AtackX = 3;
           } else if (RandomAttack4 == 2) {
             System.out.println("3,4に攻撃");
+            C4AtackY = 3;
+            C4AtackX = 4;
           } else
           System.out.println("4,3に攻撃");
+          C4AtackY = 4;
+          C4AtackX = 3;
           CornerAttack4 = 0;
+          Scanner sc = new Scanner(System.in);
+          System.err.print("攻撃の結果(命中:0,波高:1,無反応:2,撃沈:3):");
+          MyAction = sc.nextInt();
+          if(MyAction == 0){
+            countmap[C4AtackY][C4AtackX] += 2;
+            System.err.print(countmap[C4AtackY][C4AtackX]);
+            /*命中した場合、着弾地点のカウントを2上げる。*/
+          } else if (MyAction == 1){
+            /*波高しのとき、着弾地点のカウントを０に、着弾地点の周囲を+1する。*/
+            CountMyRangeY = C4AtackY;
+            CountMyRangeX = C4AtackX;
+            for(CountMyRangeY = C4AtackY-1; CountMyRangeY <= C4AtackY+1; CountMyRangeY++){
+              for (CountMyRangeX = C4AtackX-1;CountMyRangeX <= C4AtackX+1; CountMyRangeX++){
+                /*マップ外を除外*/
+                if(CountMyRangeX >= 0 && CountMyRangeY >= 0 && CountMyRangeX<= 4 && CountMyRangeY <= 4){
+                  countmap[CountMyRangeY][CountMyRangeX] += 1;
+                }
+              }
+
+            }
+            countmap[C4AtackY][C4AtackX] = 0;
+          } else if (MyAction == 2){
+            CountMyRangeY = C4AtackY;
+            CountMyRangeX = C4AtackX;
+            for(CountMyRangeY = C4AtackY-1; CountMyRangeY <= C4AtackY+1; CountMyRangeY++){
+              for (CountMyRangeX = C4AtackX-1;CountMyRangeX <= C4AtackX+1; CountMyRangeX++){
+                /*マップ外を除外*/
+                if(CountMyRangeX >= 0 && CountMyRangeY >= 0 && CountMyRangeX<= 4 && CountMyRangeY <= 4){
+                  countmap[CountMyRangeY][CountMyRangeX] = 0;
+                }
+                /*無反応の時は、着弾地点とその周囲のカウントを0にする。*/
+              }
+            }
+          } else if (MyAction == 3){
+            countmap[C4AtackY][C4AtackX] = 0;
+          }
 
         } else{
           /*move*/
