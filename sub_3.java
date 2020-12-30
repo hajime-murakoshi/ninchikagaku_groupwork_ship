@@ -1,4 +1,5 @@
 
+
 import java.util.Scanner;
 import java.util.Random;
 
@@ -155,6 +156,7 @@ class sub_3{
             MyAction = sc.nextInt();
             if(MyAction == 0){
               countmap[EnemyY][EnemyX] += 2;
+              System.err.print(countmap[EnemyY][EnemyX]);
               /*命中した場合、着弾地点のカウントを2上げる。*/
             } else if (MyAction == 1){
               /*波高しのとき、着弾地点のカウントを０に、着弾地点の周囲を+1する。*/
@@ -214,6 +216,7 @@ class sub_3{
             MyAction = sc.nextInt();
             if(MyAction == 0){
               countmap[C1AtackY][C1AtackX] += 2;
+              System.err.print(countmap[C1AtackY][C1AtackX]);
               /*命中した場合、着弾地点のカウントを2上げる。*/
             } else if (MyAction == 1){
               /*波高しのとき、着弾地点のカウントを０に、着弾地点の周囲を+1する。*/
@@ -273,6 +276,7 @@ class sub_3{
             MyAction = sc.nextInt();
             if(MyAction == 0){
               countmap[C4AtackY][C4AtackX] += 2;
+              System.err.print(countmap[C4AtackY][C4AtackX]);
               /*命中した場合、着弾地点のカウントを2上げる。*/
             } else if (MyAction == 1){
               /*波高しのとき、着弾地点のカウントを０に、着弾地点の周囲を+1する。*/
@@ -325,10 +329,12 @@ class sub_3{
                     YMinCount = countmap[MoveRangeY][x2];
                     YMinMass = MoveRangeY;
                   }
+                  if (countmap[MoveRangeY][x2] > YMinCount) {
+                      MoveRangeY = MoveRangeY;
+                  }
                 }
-
-                if (MoveRangeY == -1 || MoveRangeY == -2 || MoveRangeY == 5 || MoveRangeY == 6 || countmap[MoveRangeY][x2] > YMinCount || MoveRangeY == y2){
-                  MoveRangeY = MoveRangeY + 1;
+                if (MoveRangeY == -1 || MoveRangeY == -2 || MoveRangeY == 5 || MoveRangeY == 6){
+                  MoveRangeY = MoveRangeY;
                 }
               }
               /*上下の4マスの中で一番カウントの小さいところを見つける*/
@@ -351,14 +357,17 @@ class sub_3{
 
               for(MoveRangeY = y3-2; MoveRangeY <= y3+2; MoveRangeY++){
                 if(MoveRangeY >= 0 && MoveRangeY <=4 && MoveRangeY != y3){
-                  if(countmap[MoveRangeY][x2] <= YMinCount){
-                    YMinCount = countmap[MoveRangeY][x2];
+                  if(countmap[MoveRangeY][x3] <= YMinCount){
+                    YMinCount = countmap[MoveRangeY][x3];
                     YMinMass = MoveRangeY;
+                  }
+                  if (countmap[MoveRangeY][x3] > YMinCount) {
+                      MoveRangeY = MoveRangeY;
                   }
                 }
 
-                if (MoveRangeY == -1 || MoveRangeY == -2 || MoveRangeY == 5 || MoveRangeY == 6 || countmap[MoveRangeY][x3] > YMinCount || MoveRangeY == y3){
-                  MoveRangeY = MoveRangeY + 1;
+                if (MoveRangeY == -1 || MoveRangeY == -2 || MoveRangeY == 5 || MoveRangeY == 6){
+                  MoveRangeY = MoveRangeY;
                 }
               }  /*上下の4マスの中で一番カウントの小さいところを見つける*/
 
