@@ -331,7 +331,7 @@ class sub_3{
                   }
                 }
 
-                if (MoveRangeY == -1 || MoveRangeY == -2 || MoveRangeY == 5 || MoveRangeY == 6 || countmap[MoveRangeY][x2] > YMinCount || MoveRangeY != y2){
+                if (MoveRangeY == -1 || MoveRangeY == -2 || MoveRangeY == 5 || MoveRangeY == 6 || countmap[MoveRangeY][x2] > YMinCount || MoveRangeY == y2){
                   MoveRangeY = MoveRangeY + 1;
                 }
               }
@@ -361,7 +361,7 @@ class sub_3{
                   }
                 }
 
-                if (MoveRangeY == -1 || MoveRangeY == -2 || MoveRangeY == 5 || MoveRangeY == 6 || countmap[MoveRangeY][x3] > YMinCount || MoveRangeY != y3){
+                if (MoveRangeY == -1 || MoveRangeY == -2 || MoveRangeY == 5 || MoveRangeY == 6 || countmap[MoveRangeY][x3] > YMinCount || MoveRangeY == y3){
                   MoveRangeY = MoveRangeY + 1;
                 }
               }  /*上下の4マスの中で一番カウントの小さいところを見つける*/
