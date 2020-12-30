@@ -246,16 +246,28 @@ class sub_2m{
               AfterShip = YMinCount;
               map[YMinMass][x2] = BeforeShip;
               map[y2][x2] = AfterShip;
-              y2 = YMinMass;
-              System.out.println("Ship2: y = "+ YMinMass +",x = "+ x2 +"に移動しました");/*移動したことを報告する*/
+              if (y2 - YMinMass <= 0) {
+                System.out.println("Ship2: y = "+ YMinMass +",x = "+ x2 +"に移動しました" + "（下に" + Math.abs(y2 - YMinMass) + "移動しました）");
+              }
+              if (y2 - YMinMass > 0) {
+                System.out.println("Ship2: y = "+ YMinMass +",x = "+ x2 +"に移動しました" + "（上に" + Math.abs(y2 - YMinMass) + "移動しました）");
+              }
+
+              y2 = YMinMass;/*移動したことを報告する*/
             } else {
               BeforeShip = map[y2][x2];
               AfterShip = XMinCount;
               map[y2][XMinMass] = BeforeShip;
               map[y2][x2] = AfterShip;
+              if (x2 - XMinMass <= 0) {
+                System.out.println("Ship2: y = "+ y2 +",x = "+ XMinMass +"に移動しました" + "（右に" + Math.abs(x2 - XMinMass) + "移動しました）");
+              }
+              if (x2 - XMinMass > 0) {
+                System.out.println("Ship2: y = "+ y2 +",x = "+ XMinMass +"に移動しました" + "（左に" + Math.abs(x2 - XMinMass) + "移動しました）");
+              }/*移動したことを報告する*/
+
               x2 = XMinMass;
-              System.out.println("Ship2: y = "+ y2 +",x = "+ XMinMass +"に移動しました");/*移動したことを報告する*/
-            }/*カウントが一番小さいところに移動*/
+            }
           }
 
           if (moveship == 3) {/*Ship3の場合*/
@@ -295,15 +307,27 @@ class sub_2m{
               AfterShip = YMinCount;
               map[YMinMass][x3] = BeforeShip;
               map[y3][x3] = AfterShip;
-              y3 = YMinMass;
-              System.out.println("Ship3: y = "+ YMinMass +",x = "+ x2 +"に移動しました");/*移動したことを報告する*/
+              if (y3 - YMinMass <= 0) {
+                System.out.println("Ship3: y = "+ YMinMass +",x = "+ x3 +"に移動しました" + "（下に" + Math.abs(y3 - YMinMass) + "移動しました）");
+              }
+              if (y3 - YMinMass > 0) {
+                System.out.println("Ship3: y = "+ YMinMass +",x = "+ x3 +"に移動しました" + "（上に" + Math.abs(y3 - YMinMass) + "移動しました）");
+              }
+
+              y3 = YMinMass;/*移動したことを報告する*/
             } else {
               BeforeShip = map[y3][x3];
               AfterShip = XMinCount;
               map[y3][XMinMass] = BeforeShip;
               map[y3][x3] = AfterShip;
-              x3 = XMinMass;
-              System.out.println("Ship3: y = " + y2 +",x = "+XMinMass+"に移動しました");/*移動したことを報告する*/
+              if (x3 - XMinMass <= 0) {
+                System.out.println("Ship3: y = "+ y3 +",x = "+ XMinMass +"に移動しました" + "（右に" + Math.abs(x3 - XMinMass) + "移動しました）");
+              }
+              if (x3 - XMinMass <= 0) {
+                System.out.println("Ship3: y = "+ y3 +",x = "+ XMinMass +"に移動しました" + "（左に" + Math.abs(x3 - XMinMass) + "移動しました）");
+              }/*移動したことを報告する*/
+
+              x3 = XMinMass;/*移動したことを報告する*/
             }
 
           }
