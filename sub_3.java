@@ -84,34 +84,42 @@ class sub_3{
           EnemyY = EY;
           EnemyX = EX;
           /*自分の艦の周囲３＊３マスに敵の最大カウントの座標があるか調べる*/
-          for(RangeY = y1-1; RangeY <= y1+1; RangeY++){
-            for (RangeX = x1-1;RangeX <= x1+1; RangeX++) {
-              if(EnemyY == RangeY && EnemyX == RangeX) {
-                ExistRange = 1;
-              }
-            }
-          }
-          for(RangeY = y2-1; RangeY <= y2+1; RangeY++){
-            for (RangeX = x2-1;RangeX <= x2+1; RangeX++) {
-              if(EnemyY == RangeY && EnemyX == RangeX) {
-                ExistRange = 1;
-              }
-            }
-          }
-          for(RangeY = y3-1; RangeY <= y3+1; RangeY++){
-            for (RangeX = x3-1;RangeX <= x3+1; RangeX++) {
-              if(EnemyY == RangeY && EnemyX == RangeX) {
-                ExistRange = 1;
-              }
-            }
-          }
-          for(RangeY = y4-1; RangeY <= y4+1; RangeY++){
-            for (RangeX = x4-1;RangeX <= x4+1; RangeX++) {
-              if(EnemyY == RangeY && EnemyX == RangeX) {
-                ExistRange = 1;
-              }
-            }
-          }
+          if (map[y1][x1] > 0){
+                        for(RangeY = y1-1; RangeY <= y1+1; RangeY++){
+                            for (RangeX = x1-1;RangeX <= x1+1; RangeX++) {
+                                if(EnemyY == RangeY && EnemyX == RangeX) {
+                                    ExistRange = 1;
+                                }
+                            }
+                        }
+                    }
+                    if (map[y2][x2] > 0){
+                        for(RangeY = y2-1; RangeY <= y2+1; RangeY++){
+                            for (RangeX = x2-1;RangeX <= x2+1; RangeX++) {
+                                if(EnemyY == RangeY && EnemyX == RangeX) {
+                                    ExistRange = 1;
+                                }
+                            }
+                        }
+                    }
+                    if (map[y3][x3] > 0){
+                        for(RangeY = y3-1; RangeY <= y3+1; RangeY++){
+                            for (RangeX = x3-1;RangeX <= x3+1; RangeX++) {
+                                if(EnemyY == RangeY && EnemyX == RangeX) {
+                                    ExistRange = 1;
+                                }
+                            }
+                        }
+                    }
+                    if (map[y4][x4] > 0){
+                        for(RangeY = y4-1; RangeY <= y4+1; RangeY++){
+                            for (RangeX = x4-1;RangeX <= x4+1; RangeX++) {
+                                if(EnemyY == RangeY && EnemyX == RangeX) {
+                                    ExistRange = 1;
+                                }
+                            }
+                        }
+                    }
           /*自分の艦と同じ位置に敵の最大カウントの座標がある場合を除外*/
           if(EnemyY == y1 && EnemyX == x1){
             ExistRange = 0;
