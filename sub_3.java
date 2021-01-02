@@ -1,4 +1,3 @@
-
 import java.util.Scanner;
 import java.util.Random;
 
@@ -85,41 +84,41 @@ class sub_3{
           EnemyX = EX;
           /*自分の艦の周囲３＊３マスに敵の最大カウントの座標があるか調べる*/
           if (map[y1][x1] > 0){
-                        for(RangeY = y1-1; RangeY <= y1+1; RangeY++){
-                            for (RangeX = x1-1;RangeX <= x1+1; RangeX++) {
-                                if(EnemyY == RangeY && EnemyX == RangeX) {
-                                    ExistRange = 1;
-                                }
-                            }
-                        }
-                    }
-                    if (map[y2][x2] > 0){
-                        for(RangeY = y2-1; RangeY <= y2+1; RangeY++){
-                            for (RangeX = x2-1;RangeX <= x2+1; RangeX++) {
-                                if(EnemyY == RangeY && EnemyX == RangeX) {
-                                    ExistRange = 1;
-                                }
-                            }
-                        }
-                    }
-                    if (map[y3][x3] > 0){
-                        for(RangeY = y3-1; RangeY <= y3+1; RangeY++){
-                            for (RangeX = x3-1;RangeX <= x3+1; RangeX++) {
-                                if(EnemyY == RangeY && EnemyX == RangeX) {
-                                    ExistRange = 1;
-                                }
-                            }
-                        }
-                    }
-                    if (map[y4][x4] > 0){
-                        for(RangeY = y4-1; RangeY <= y4+1; RangeY++){
-                            for (RangeX = x4-1;RangeX <= x4+1; RangeX++) {
-                                if(EnemyY == RangeY && EnemyX == RangeX) {
-                                    ExistRange = 1;
-                                }
-                            }
-                        }
-                    }
+            for(RangeY = y1-1; RangeY <= y1+1; RangeY++){
+              for (RangeX = x1-1;RangeX <= x1+1; RangeX++) {
+                if(EnemyY == RangeY && EnemyX == RangeX) {
+                  ExistRange = 1;
+                }
+              }
+            }
+          }
+          if (map[y2][x2] > 0){
+            for(RangeY = y2-1; RangeY <= y2+1; RangeY++){
+              for (RangeX = x2-1;RangeX <= x2+1; RangeX++) {
+                if(EnemyY == RangeY && EnemyX == RangeX) {
+                  ExistRange = 1;
+                }
+              }
+            }
+          }
+          if (map[y3][x3] > 0){
+            for(RangeY = y3-1; RangeY <= y3+1; RangeY++){
+              for (RangeX = x3-1;RangeX <= x3+1; RangeX++) {
+                if(EnemyY == RangeY && EnemyX == RangeX) {
+                  ExistRange = 1;
+                }
+              }
+            }
+          }
+          if (map[y4][x4] > 0){
+            for(RangeY = y4-1; RangeY <= y4+1; RangeY++){
+              for (RangeX = x4-1;RangeX <= x4+1; RangeX++) {
+                if(EnemyY == RangeY && EnemyX == RangeX) {
+                  ExistRange = 1;
+                }
+              }
+            }
+          }
           /*自分の艦と同じ位置に敵の最大カウントの座標がある場合を除外*/
           if(EnemyY == y1 && EnemyX == x1){
             ExistRange = 0;
@@ -313,6 +312,7 @@ class sub_3{
             }
           } else{
             /*move*/
+            /*move*/
             System.out.print("move:");
             Random random = new Random();
             int num = random.nextInt(100);
@@ -337,22 +337,27 @@ class sub_3{
                   if(countmap[MoveRangeY][x2] <= YMinCount){
                     YMinCount = countmap[MoveRangeY][x2];
                     YMinMass = MoveRangeY;
+                    System.out.println("MoveRangeY :" + MoveRangeY);
                   }
                   if (countmap[MoveRangeY][x2] > YMinCount) {
-                    MoveRangeY = MoveRangeY;
+                    MoveRangeY += 0;
                   }
                 }
-                if (MoveRangeY == y2) {
-                  MoveRangeY = MoveRangeY;
+                if (MoveRangeY >= 0 && MoveRangeY <=4 && MoveRangeY == y2) {
+                  MoveRangeY += 0;
                 }
                 if (MoveRangeY == -1 || MoveRangeY == -2 || MoveRangeY == 5 || MoveRangeY == 6){
-                  MoveRangeY = MoveRangeY;
+                  MoveRangeY += 0;
                 }
               }
               /*上下の4マスの中で一番カウントの小さいところを見つける*/
 
               BeforeShip = map[y2][x2];
-              AfterShip = YMinCount;
+              AfterShip = map[YMinMass][x2];
+              System.out.println("BeforeShip :" + BeforeShip);
+              System.out.println("AfterShip :" + AfterShip);
+              System.out.println("YMinMass :" + YMinMass);
+              System.out.println("beforeY2 :" + y2);
               map[YMinMass][x2] = BeforeShip;
               map[y2][x2] = AfterShip;
               if (y2 - YMinMass <= 0) {
@@ -362,6 +367,7 @@ class sub_3{
                 System.out.println("Ship2: y = "+ YMinMass +",x = "+ x2 +"に移動しました" + "（上に" + Math.abs(y2 - YMinMass) + "移動しました）");
               }
               y2 = YMinMass;
+              System.out.println("afterY2 :" + y2);
             }
             /*移動したことを報告する*/
 
@@ -372,31 +378,37 @@ class sub_3{
                   if(countmap[MoveRangeY][x3] <= YMinCount){
                     YMinCount = countmap[MoveRangeY][x3];
                     YMinMass = MoveRangeY;
+                    System.out.println("MoveRangeY :" + MoveRangeY);
                   }
                   if (countmap[MoveRangeY][x3] > YMinCount) {
-                    MoveRangeY = MoveRangeY;
+                    MoveRangeY += 0;
                   }
                 }
-                if (MoveRangeY == y3 ) {
-                  MoveRangeY = MoveRangeY;
+                if (MoveRangeY >= 0 && MoveRangeY <=4 && MoveRangeY == y3 ) {
+                  MoveRangeY += 0;
                 }
 
                 if (MoveRangeY == -1 || MoveRangeY == -2 || MoveRangeY == 5 || MoveRangeY == 6){
-                  MoveRangeY = MoveRangeY;
+                  MoveRangeY += 0;
                 }
               }  /*上下の4マスの中で一番カウントの小さいところを見つける*/
 
               BeforeShip = map[y3][x3];
-              AfterShip = YMinCount;
+              AfterShip = map[YMinMass][x3];
               map[YMinMass][x3] = BeforeShip;
               map[y3][x3] = AfterShip;
+              System.out.println("BeforeShip :" + BeforeShip);
+              System.out.println("AfterShip :" + AfterShip);
+              System.out.println("YMinMass :" + YMinMass);
+              System.out.println("beforeY3 :" + y3);
               if (y3 - YMinMass <= 0) {
                 System.out.println("Ship3: y = "+ YMinMass +",x = "+ x3 +"に移動しました" + "（下に" + Math.abs(y3 - YMinMass) + "移動しました）");
               }
               if (y3 - YMinMass > 0) {
                 System.out.println("Ship3: y = "+ YMinMass +",x = "+ x3 +"に移動しました" + "（上に" + Math.abs(y3 - YMinMass) + "移動しました）");
               }
-              y3 = YMinMass;/*移動したことを報告する*/
+              y3 = YMinMass;
+              System.out.println("afterY3 :" + y3);/*移動したことを報告する*/
             }
           }/*自分の艦が角のみの時*/
         } else {
