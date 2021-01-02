@@ -222,6 +222,7 @@ class sub_3{
             if(MyAction == 0){
               countmap[C1AtackY][C1AtackX] += 2;
               /*命中した場合、着弾地点のカウントを2上げる。*/
+              System.err.print(countmap[C1AtackY][C1AtackX]);
             } else if (MyAction == 1){
               /*波高しのとき、着弾地点のカウントを０に、着弾地点の周囲を+1する。*/
               CountMyRangeY = C1AtackY;
@@ -313,6 +314,7 @@ class sub_3{
           } else{
             /*move*/
             /*move*/
+            YMinCount = 100;
             System.out.print("move:");
             Random random = new Random();
             int num = random.nextInt(100);
@@ -354,10 +356,6 @@ class sub_3{
 
               BeforeShip = map[y2][x2];
               AfterShip = map[YMinMass][x2];
-              System.out.println("BeforeShip :" + BeforeShip);
-              System.out.println("AfterShip :" + AfterShip);
-              System.out.println("YMinMass :" + YMinMass);
-              System.out.println("beforeY2 :" + y2);
               map[YMinMass][x2] = BeforeShip;
               map[y2][x2] = AfterShip;
               if (y2 - YMinMass <= 0) {
@@ -397,10 +395,6 @@ class sub_3{
               AfterShip = map[YMinMass][x3];
               map[YMinMass][x3] = BeforeShip;
               map[y3][x3] = AfterShip;
-              System.out.println("BeforeShip :" + BeforeShip);
-              System.out.println("AfterShip :" + AfterShip);
-              System.out.println("YMinMass :" + YMinMass);
-              System.out.println("beforeY3 :" + y3);
               if (y3 - YMinMass <= 0) {
                 System.out.println("Ship3: y = "+ YMinMass +",x = "+ x3 +"に移動しました" + "（下に" + Math.abs(y3 - YMinMass) + "移動しました）");
               }
@@ -645,6 +639,20 @@ class sub_3{
               countmap[C34AtackY][C34AtackX] = 0;
             }
           }
+        }
+        int f,g;
+        for (f = 0;f <= 4;f++ ) {
+            for (g = 0; g<=4 ;g++ ) {
+                System.out.print(map[f][g]);
+            }
+            System.out.print("\n");
+        }
+        System.out.print("\n");
+        for (f = 0;f <= 4;f++ ) {
+            for (g = 0; g<=4 ;g++ ) {
+                System.out.print(countmap[f][g]);
+            }
+            System.out.print("\n");
         }
         TurnCount += 1;
         System.out.print("\n");
